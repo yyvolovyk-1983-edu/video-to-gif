@@ -42,9 +42,11 @@ def video_frame_img(video_file, output_file):
     print(f"GIF saved as: {output_file}")
 
 
-# Виклик з правильним шляхом
+
 video_frame_img(
     r"C:\Users\USER\Downloads\example_video.mp4",
     "output.gif"
-)
+)                                                        # correct path
+
+
 
