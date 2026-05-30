@@ -1,16 +1,24 @@
+<div align="center">
+
 # video-to-gif
 
-> Конвертер відеофайлів в анімований GIF за допомогою OpenCV та Pillow.
+**Конвертер відео в анімований GIF за допомогою OpenCV та Pillow**
 
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat&logo=python&logoColor=white)](https://python.org)
-[![OpenCV](https://img.shields.io/badge/OpenCV-4.x-5C3EE8?style=flat&logo=opencv&logoColor=white)](https://opencv.org)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://github.com/yyvolovyk-1983-edu/video-to-gif)
+[![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)](https://github.com/yyvolovyk-1983-edu/video-to-gif)
+[![Pillow](https://img.shields.io/badge/Pillow-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://github.com/yyvolovyk-1983-edu/video-to-gif)
 
-## Можливості
+</div>
 
-- Витягує перші N кадрів з відео (налаштовується)
-- Зменшує розмір до 320×240 для оптимізації файлу
-- Регульована швидкість відтворення GIF
-- Підтримка MP4, AVI, MOV та інших форматів через OpenCV
+---
+
+## Як працює
+
+```
+відеофайл → OpenCV читає кадри → resize 320×240 → BGR→RGB → PIL Image → GIF
+```
+
+---
 
 ## Встановлення
 
@@ -20,23 +28,53 @@ cd video-to-gif
 pip install opencv-python pillow
 ```
 
+---
+
 ## Використання
 
 ```python
 from video_to_gif import video_frame_img
 
-# Базове використання
-video_frame_img("path/to/video.mp4", "output.gif")
-
-# З параметрами (кількість кадрів, розмір, fps)
-video_frame_img("video.mp4", "output.gif", max_frames=30, size=(640, 480), fps=15)
+video_frame_img(
+    video_file="video.mp4",
+    output_file="output.gif"
+)
 ```
 
-## Приклад
+---
 
-```bash
-python video_to_gif.py --input example_video.mp4 --output result.gif --frames 20
+## Параметри
+
+| Параметр | Тип | Опис |
+|---|---|---|
+| `video_file` | `str` | Шлях до вхідного відеофайлу |
+| `output_file` | `str` | Ім'я вихідного GIF-файлу |
+
+**Підтримувані формати:** MP4, AVI, MOV та інші формати OpenCV.
+
+---
+
+## Що робить скрипт
+
+1. Відкриває відеофайл через `cv2.VideoCapture()`
+2. Зчитує до **20 кадрів** послідовно
+3. Змінює розмір кожного кадру до **320×240** пікселів
+4. Конвертує колірний простір **BGR → RGB**
+5. Перетворює кадр на `PIL Image`
+6. Зберігає GIF з тривалістю **150 мс/кадр**, нескінченним повтором
+
+---
+
+## Структура
+
 ```
+video-to-gif/
+├── video_to_gif.py
+├── example_video.mp4
+└── README.md
+```
+
+---
 
 ## Залежності
 
@@ -45,11 +83,11 @@ opencv-python
 pillow
 ```
 
-## Структура
+---
 
-```
-video-to-gif/
-├── video_to_gif.py     # основний скрипт
-├── example_video.mp4   # приклад відео
-└── README.md
-```
+<div align="center">
+
+**Автор:** [Євген Воловик](https://github.com/yyvolovyk-1983-edu) · Харків, Україна
+📧 y.y.volovyk@student.khai.edu · [LinkedIn](https://www.linkedin.com/in/yevhen-volovyk/)
+
+</div>
